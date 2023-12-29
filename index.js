@@ -22,11 +22,13 @@ app.use(express.urlencoded({ extended: true }))
 // Fitbit endpoint
 app.get('/fitbit', async (req, res) => {
   const code = req.query.verify;
-  console.log("code => ", code)
+  console.log("code => ", code);
+  console.log("matched => ", code === "05432f76057b1b0c90c9f116811ef145f13feb5be2f7c945479178cef376a583")
   if (code === "05432f76057b1b0c90c9f116811ef145f13feb5be2f7c945479178cef376a583"){
     return res.status(204).send();
+  } else {
+    return res.status(404).send();
   }
-  return res.status(404).send();
 })
 
 // Create or Update an item
