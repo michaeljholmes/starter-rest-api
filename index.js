@@ -19,6 +19,17 @@ app.use(express.urlencoded({ extended: true }))
 // app.use(express.static('public', options))
 // #############################################################################
 
+// Fitbit endpoint
+app.get('/fitbit', async (req, res) => {
+  const code = req.query.verify;
+  if (code === "05432f76057b1b0c90c9f116811ef145f13feb5be2f7c945479178cef376a583"){
+    return res.status(204);
+  }
+  return res.status(404)
+
+
+})
+
 // Create or Update an item
 app.post('/:col/:key', async (req, res) => {
   console.log(req.body)
